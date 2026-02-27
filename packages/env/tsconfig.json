@@ -1,0 +1,3 @@
+{
+  "extends": "@BetterXL_beta/config/tsconfig.base.json"
+}

@@ -7,11 +7,11 @@ export const Route = createFileRoute("/")({
 });
 
 function HomeComponent() {
-  const healthCheck = useQuery(api.healthCheck.get);
+  const testData = useQuery(api.testData.getTestData);
 
   return (
     <div className="container mx-auto max-w-3xl px-4 py-2 flex items-center justify-center h-full">
-      <div className="grid gap-6">Hello World</div>
+      <div className="grid gap-6">{testData}</div>
     </div>
   );
 }

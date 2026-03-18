@@ -1,17 +1,40 @@
-import { api } from "@BetterXL_beta/backend/convex/_generated/api";
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "convex/react";
+import { Workbook } from "@fortune-sheet/react";
+import "@fortune-sheet/react/dist/index.css";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
 
 function HomeComponent() {
-  const testData = useQuery(api.testData.getTestData);
+  const excelData = [
+    {
+      id: "1",
+      name: "Sheet 1",
+      celldata: [
+        {
+          r: 0,
+          c: 0,
+          v: {
+            v: "Welcome to BetterXL",
+            ct: { fa: "General", t: "g" },
+          },
+        },
+        {
+          r: 1,
+          c: 0,
+          v: {
+            v: "fortune-sheet is now rendering",
+            ct: { fa: "General", t: "g" },
+          },
+        },
+      ],
+    },
+  ];
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-2 flex items-center justify-center h-full">
-      <div className="grid gap-6">{testData}</div>
+    <div className="h-full min-h-0 w-full">
+      <Workbook data={excelData} />
     </div>
   );
 }

@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@BetterXL_beta/env": "workspace:*",
+    "@fortune-sheet/react": "^1.0.4",
     "dotenv": "catalog:",
     "zod": "catalog:"
   },

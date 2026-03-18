@@ -1,33 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Workbook } from "@fortune-sheet/react";
 import "@fortune-sheet/react/dist/index.css";
-import { useState } from "react";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "@BetterXL_beta/backend/convex/_generated/api";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
 
 function HomeComponent() {
+  const setTestData = useMutation(api.testData.setTestData);
   const handleChange = (data: any) => {
     console.log(data);
-    setExcelData(data);
+    setTestData({
+      data: data,
+    });
   };
-  const [excelData, setExcelData] = useState<any>([
-    {
-      id: "1",
-      name: "Sheet 1",
-      celldata: [
-        {
-          r: 0,
-          c: 0,
-          v: {
-            v: "Welcome to BetterXL",
-            ct: { fa: "General", t: "g" },
-          },
-        },
-      ],
-    },
-  ]);
+  const excelData = useQuery(api.testData.getTestData);
 
   return (
     <div className="h-full w-full">

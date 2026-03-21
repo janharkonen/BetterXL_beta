@@ -7,13 +7,6 @@ export const getTestData = query({
   handler: async (ctx) => {
     const convex_row = await ctx.db.get("test_table", id);
     const testData = convex_row?.testData;
-    if (!testData || testData === undefined) {
-      return {
-        celldata: [],
-        id: "",
-        name: "",
-      };
-    }
     return testData;
   },
 });
